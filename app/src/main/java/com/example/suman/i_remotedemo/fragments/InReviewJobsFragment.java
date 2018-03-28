@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.suman.i_remotedemo.Adapters.JobAdapter;
 import com.example.suman.i_remotedemo.R;
 import com.example.suman.i_remotedemo.entity.Job;
 
@@ -41,7 +42,7 @@ public class InReviewJobsFragment extends Fragment {
         recyclerView.hasFixedSize();
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new InReviewAdapter(jobs);
+        adapter = new JobAdapter(jobs);
         recyclerView.setAdapter(adapter);
         populateData();
         return rootView;
@@ -58,42 +59,4 @@ public class InReviewJobsFragment extends Fragment {
         jobs.add(job);
     }
 
-    private class InReviewAdapter extends RecyclerView.Adapter<InReviewAdapter.InReviewViewHolder> {
-
-        private List<Job> jobs;
-
-        public InReviewAdapter(List<Job> jobs) {
-            this.jobs = jobs;
-        }
-
-        @Override
-        public InReviewViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.job_layout, parent, false);
-            return new InReviewViewHolder(itemView);
-        }
-
-        @Override
-        public void onBindViewHolder(InReviewViewHolder holder, int position) {
-            Job job = jobs.get(position);
-            holder.txtJobTitle.setText(job.getJobTitle());
-            holder.txtJobLocation.setText(job.getJobLocation());
-        }
-
-        @Override
-        public int getItemCount() {
-            return jobs.size();
-        }
-
-        public class InReviewViewHolder extends RecyclerView.ViewHolder {
-
-            TextView txtJobTitle;
-            TextView txtJobLocation;
-
-            public InReviewViewHolder(View itemView) {
-                super(itemView);
-                txtJobTitle = (TextView) itemView.findViewById(R.id.job_title);
-                txtJobLocation = (TextView) itemView.findViewById(R.id.job_location);
-            }
-        }
-    }
 }
