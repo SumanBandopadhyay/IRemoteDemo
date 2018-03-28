@@ -18,7 +18,6 @@ import android.view.MenuItem;
 import com.example.suman.i_remotedemo.R;
 import com.example.suman.i_remotedemo.fragments.ContentFragment;
 
-// Main Activity
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
