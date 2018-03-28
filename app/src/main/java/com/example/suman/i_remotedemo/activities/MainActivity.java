@@ -17,6 +17,7 @@ import android.view.MenuItem;
 
 import com.example.suman.i_remotedemo.R;
 import com.example.suman.i_remotedemo.fragments.ContentFragment;
+import com.example.suman.i_remotedemo.fragments.HomeFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -40,8 +41,9 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        ContentFragment contentFragment = new ContentFragment();
-        fragmentTransaction.replace(R.id.frame_layout, contentFragment);
+        //ContentFragment contentFragment = new ContentFragment();
+        HomeFragment homeFragment = new HomeFragment();
+        fragmentTransaction.replace(R.id.frame_layout, homeFragment);
         fragmentTransaction.commit();
     }
 
