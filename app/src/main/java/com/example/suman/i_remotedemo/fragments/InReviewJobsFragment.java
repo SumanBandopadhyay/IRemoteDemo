@@ -26,6 +26,8 @@ import java.util.List;
 
 public class InReviewJobsFragment extends Fragment implements JobClickListner {
 
+    public static final String TAG = InReviewJobsFragment.class.getName();
+
     private RecyclerView recyclerView;
     private JobAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -35,6 +37,7 @@ public class InReviewJobsFragment extends Fragment implements JobClickListner {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        populateData();
     }
 
     @Nullable
@@ -45,7 +48,7 @@ public class InReviewJobsFragment extends Fragment implements JobClickListner {
         recyclerView.hasFixedSize();
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
-        populateData();
+        //populateData();
         adapter = new JobAdapter(jobs);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
@@ -81,7 +84,8 @@ public class InReviewJobsFragment extends Fragment implements JobClickListner {
         //args.putInt(JobDescriptionFragment.JOB, position);
         args.putString(JobDescriptionFragment.JOB, Utils.getGsonParser().toJson(job));
         jobDescriptionFragment.setArguments(args);
-        fragmentTransaction.replace(R.id.frame_layout, jobDescriptionFragment, jobDescriptionFragment.getTag());
+        fragmentTransaction.replace(R.id.frame_layout, jobDescriptionFragment, jobDescriptionFragment.getTag())
+                .addToBackStack(jobDescriptionFragment.getTag());
         //fragmentTransaction.add(R.id.frame_layout, jobDescriptionFragment, jobDescriptionFragment.getTag()).addToBackStack(null).commit();
         fragmentTransaction.commit();
     }

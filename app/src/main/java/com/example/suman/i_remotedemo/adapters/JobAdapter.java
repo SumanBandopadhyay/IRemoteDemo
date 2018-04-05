@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.example.suman.i_remotedemo.R;
 import com.example.suman.i_remotedemo.entity.Job;
 import com.example.suman.i_remotedemo.listners.JobClickListner;
+import com.example.suman.i_remotedemo.test.JobsData;
 
 import java.util.List;
 

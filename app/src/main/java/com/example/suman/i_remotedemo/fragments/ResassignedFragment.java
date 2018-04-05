@@ -16,14 +16,7 @@ import com.example.suman.i_remotedemo.entity.Job;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ResassignedFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link ResassignedFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class ResassignedFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -34,6 +27,7 @@ public class ResassignedFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        populateData();
     }
 
     @Nullable
@@ -46,7 +40,7 @@ public class ResassignedFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         adapter = new JobAdapter(jobs);
         recyclerView.setAdapter(adapter);
-        populateData();
+        //populateData();
         return rootView;
     }
 
@@ -59,6 +53,7 @@ public class ResassignedFragment extends Fragment {
         job.setJobTitle("Job title 24");
         job.setJobLocation("Kestopur");
         jobs.add(job);
+        //adapter.notifyDataSetChanged();
     }
 
 }

@@ -31,6 +31,7 @@ public class NewJobsFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        populateData();
     }
 
     @Nullable
@@ -43,7 +44,7 @@ public class NewJobsFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         adapter = new JobAdapter(jobs);
         recyclerView.setAdapter(adapter);
-        populateData();
+        //populateData();
         return rootView;
     }
 
@@ -56,6 +57,7 @@ public class NewJobsFragment extends Fragment {
         job.setJobTitle("Job title 14");
         job.setJobLocation("Baguiati");
         jobs.add(job);
+        //adapter.notifyDataSetChanged();
     }
 
 }
