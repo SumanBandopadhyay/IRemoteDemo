@@ -6,7 +6,6 @@
 
     <android.support.v7.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/job_card_view"
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,29 +19,15 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/job_title"
-                android:text="Title"
+                android:id="@+id/item_name"
+                android:text="Title1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true" />
 
             <TextView
-                android:id="@+id/job_created_on"
-                android:text="Created On"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true" />
-
-            <TextView
-                android:id="@+id/job_model_number"
-                android:text="Model Number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true" />
-
-            <TextView
-                android:id="@+id/job_location"
-                android:text="Location"
+                android:id="@+id/item_price"
+                android:text="Location1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

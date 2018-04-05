@@ -1,5 +1,7 @@
 package com.example.suman.i_remotedemo.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by Suman on 28-03-2018.
  */

@@ -1,7 +1,5 @@
 package com.example.suman.i_remotedemo.fragments;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.suman.i_remotedemo.Adapters.JobAdapter;
+import com.example.suman.i_remotedemo.adapters.JobAdapter;
 import com.example.suman.i_remotedemo.R;
 import com.example.suman.i_remotedemo.entity.Job;
 
