@@ -16,7 +16,7 @@ import java.util.List;
  * Created by Poulami on 28-03-2018.
  */
 
-public class JobAdapter extends RecyclerView.Adapter<JobAdapter.JobViewAdapter> {
+public class JobAdapter extends RecyclerView.Adapter<JobAdapter.JobViewHolder> {
 
     private List<Job> jobs;
 
@@ -25,15 +25,17 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.JobViewAdapter> 
     }
 
     @Override
-    public JobViewAdapter onCreateViewHolder(ViewGroup parent, int viewType) {
+    public JobViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.job_layout, parent, false);
-        return new JobViewAdapter(itemView);
+        return new JobViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(JobViewAdapter holder, int position) {
+    public void onBindViewHolder(JobViewHolder holder, int position) {
         Job job = jobs.get(position);
         holder.txtJobTitle.setText(job.getJobTitle());
+        holder.txtJobCreatedOn.setText(job.getJobCreatedOn());
+        holder.txtJobModelNumber.setText(job.getJobModelNumber());
         holder.txtJobLocation.setText(job.getJobLocation());
     }
 
@@ -42,14 +44,18 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.JobViewAdapter> 
         return jobs.size();
     }
 
-    public class JobViewAdapter extends RecyclerView.ViewHolder {
+    public class JobViewHolder extends RecyclerView.ViewHolder {
 
         TextView txtJobTitle;
+        TextView txtJobCreatedOn;
+        TextView txtJobModelNumber;
         TextView txtJobLocation;
 
-        public JobViewAdapter(View itemView) {
+        public JobViewHolder(View itemView) {
             super(itemView);
             txtJobTitle = (TextView) itemView.findViewById(R.id.job_title);
+            txtJobCreatedOn = (TextView) itemView.findViewById(R.id.job_created_on);
+            txtJobModelNumber = (TextView) itemView.findViewById(R.id.job_model_number);
             txtJobLocation = (TextView) itemView.findViewById(R.id.job_location);
         }
     }

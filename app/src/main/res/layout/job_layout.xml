@@ -20,14 +20,28 @@
 
             <TextView
                 android:id="@+id/job_title"
-                android:text="Title1"
+                android:text="Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true" />
+
+            <TextView
+                android:id="@+id/job_created_on"
+                android:text="Created On"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true" />
+
+            <TextView
+                android:id="@+id/job_model_number"
+                android:text="Model Number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true" />
 
             <TextView
                 android:id="@+id/job_location"
-                android:text="Location1"
+                android:text="Location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

@@ -43,6 +43,7 @@ public class HomeFragment extends Fragment {
         FragmentAdapter adapter = new FragmentAdapter(getChildFragmentManager());
         adapter.addFragment(new InReviewJobsFragment(), "In Review");
         adapter.addFragment(new NewJobsFragment(), "New");
+        adapter.addFragment(new ResassignedFragment(), "Reassigned");
         viewPager.setAdapter(adapter);
     }
 
