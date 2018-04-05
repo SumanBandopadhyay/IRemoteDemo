@@ -23,6 +23,7 @@ import com.example.suman.i_remotedemo.fragments.ContentFragment;
 import com.example.suman.i_remotedemo.fragments.HomeFragment;
 import com.example.suman.i_remotedemo.fragments.OnHandItemsFragment;
 import com.example.suman.i_remotedemo.fragments.WarehouseInventoryFragment;
+import com.example.suman.i_remotedemo.utils.Preferences;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -39,8 +40,11 @@ public class MainActivity extends AppCompatActivity
         } catch (InterruptedException e) {
             e.printStackTrace();
         }*/
-        //Intent intent = new Intent(this, LoginActivity.class);
-        //startActivity(intent);
+        SharedPreferences preferences = getSharedPreferences(Preferences.preferenceName, MODE_PRIVATE);
+        if (!preferences.getBoolean(Preferences.loggedIn, false)) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -61,6 +65,30 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.replace(R.id.frame_layout, mFragment);
             fragmentTransaction.commit();
         }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        //if (mFragment == null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            mFragment = new HomeFragment();
+            fragmentTransaction.replace(R.id.frame_layout, mFragment);
+            fragmentTransaction.commit();
+        //}
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //if (mFragment == null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            mFragment = new HomeFragment();
+            fragmentTransaction.replace(R.id.frame_layout, mFragment);
+            fragmentTransaction.commit();
+        //}
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.example.suman.i_remotedemo.activities;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -33,6 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.suman.i_remotedemo.R;
+import com.example.suman.i_remotedemo.utils.Preferences;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -68,6 +70,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        SharedPreferences preferences = getSharedPreferences(Preferences.preferenceName, MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean(Preferences.loggedIn, true);
+        editor.commit();
+
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
