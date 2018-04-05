@@ -3,16 +3,19 @@ package com.example.suman.i_remotedemo.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.example.suman.i_remotedemo.Adapters.JobAdapter;
+import com.example.suman.i_remotedemo.adapters.JobAdapter;
 import com.example.suman.i_remotedemo.R;
 import com.example.suman.i_remotedemo.entity.Job;
+import com.example.suman.i_remotedemo.listners.JobClickListner;
+import com.example.suman.i_remotedemo.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +24,10 @@ import java.util.List;
  * Created by Suman on 28-03-2018.
  */
 
-public class InReviewJobsFragment extends Fragment {
+public class InReviewJobsFragment extends Fragment implements JobClickListner {
 
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
+    private JobAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
 
     private List<Job> jobs = new ArrayList<>();
@@ -42,9 +45,11 @@ public class InReviewJobsFragment extends Fragment {
         recyclerView.hasFixedSize();
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new JobAdapter(jobs);
-        recyclerView.setAdapter(adapter);
         populateData();
+        adapter = new JobAdapter(jobs);
+        adapter.setClickListener(this);
+        recyclerView.setAdapter(adapter);
+        //populateData();
         return rootView;
     }
 
@@ -57,6 +62,21 @@ public class InReviewJobsFragment extends Fragment {
         job.setJobTitle("Job Title 2");
         job.setJobLocation("Job Location 2");
         jobs.add(job);
+        //adapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void jobClicked(Job job) {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        JobDescriptionFragment jobDescriptionFragment = new JobDescriptionFragment();
+        Bundle args = new Bundle();
+        //args.putSerializable(JobDescriptionFragment.JOB, job);
+        //args.putInt(JobDescriptionFragment.JOB, position);
+        args.putString(JobDescriptionFragment.JOB, Utils.getGsonParser().toJson(job));
+        jobDescriptionFragment.setArguments(args);
+        fragmentTransaction.replace(R.id.frame_layout, jobDescriptionFragment, jobDescriptionFragment.getTag());
+        //fragmentTransaction.add(R.id.frame_layout, jobDescriptionFragment, jobDescriptionFragment.getTag()).addToBackStack(null).commit();
+        fragmentTransaction.commit();
+    }
 }

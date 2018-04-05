@@ -1,8 +1,11 @@
 package com.example.suman.i_remotedemo.activities;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -18,20 +21,27 @@ import android.view.MenuItem;
 import com.example.suman.i_remotedemo.R;
 import com.example.suman.i_remotedemo.fragments.ContentFragment;
 import com.example.suman.i_remotedemo.fragments.HomeFragment;
+import com.example.suman.i_remotedemo.fragments.OnHandItemsFragment;
+import com.example.suman.i_remotedemo.fragments.WarehouseInventoryFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private static Fragment mFragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme_NoActionBar);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        try {
+        /*try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
+        //Intent intent = new Intent(this, LoginActivity.class);
+        //startActivity(intent);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -44,13 +54,13 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        //ContentFragment contentFragment = new ContentFragment();
-        HomeFragment homeFragment = new HomeFragment();
-        fragmentTransaction.replace(R.id.frame_layout, homeFragment);
-        fragmentTransaction.commit();
+        if (mFragment == null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            mFragment = new HomeFragment();
+            fragmentTransaction.replace(R.id.frame_layout, mFragment);
+            fragmentTransaction.commit();
+        }
     }
 
     @Override
@@ -85,27 +95,49 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        /*if (isFinishing()) {
+            FragmentManager fm = getSupportFragmentManager();
+            fm.beginTransaction().remove(mFragment).commit();
+        }*/
+    }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        /*if (id == R.id.nav_home) {
-            // Handle the camera action
+        if (id == R.id.nav_home) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            mFragment = new HomeFragment();
+            fragmentTransaction.replace(R.id.frame_layout, mFragment);
+            fragmentTransaction.commit();
         } else if (id == R.id.nav_on_hand_items) {
-
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            mFragment = new OnHandItemsFragment();
+            fragmentTransaction.replace(R.id.frame_layout, mFragment);
+            fragmentTransaction.commit();
         } else if (id == R.id.nav_warehouse_inventory) {
-
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            mFragment = new WarehouseInventoryFragment();
+            fragmentTransaction.replace(R.id.frame_layout, mFragment);
+            fragmentTransaction.commit();
         } else if (id == R.id.nav_cart) {
 
         } else if (id == R.id.nav_order_status) {
 
         } else if (id == R.id.nav_settings) {
-
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
         } else if(id == R.id.nav_help){
 
-        }*/
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
