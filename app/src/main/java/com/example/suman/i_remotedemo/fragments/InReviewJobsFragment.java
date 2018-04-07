@@ -81,13 +81,10 @@ public class InReviewJobsFragment extends Fragment implements JobClickListner {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         JobDescriptionFragment jobDescriptionFragment = new JobDescriptionFragment();
         Bundle args = new Bundle();
-        //args.putSerializable(JobDescriptionFragment.JOB, job);
-        //args.putInt(JobDescriptionFragment.JOB, position);
         args.putString(JobDescriptionFragment.JOB, Utils.getGsonParser().toJson(job));
         jobDescriptionFragment.setArguments(args);
         fragmentTransaction.replace(R.id.frame_layout, jobDescriptionFragment, jobDescriptionFragment.getTag())
                 .addToBackStack(jobDescriptionFragment.getTag());
-        //fragmentTransaction.add(R.id.frame_layout, jobDescriptionFragment, jobDescriptionFragment.getTag()).addToBackStack(null).commit();
         fragmentTransaction.commit();
     }
 }
