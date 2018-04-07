@@ -26,6 +26,8 @@ import java.util.List;
 
 public class InReviewJobsFragment extends Fragment implements JobClickListner {
 
+    public static final String TAG = InReviewJobsFragment.class.getName();
+
     private RecyclerView recyclerView;
     private JobAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -35,6 +37,7 @@ public class InReviewJobsFragment extends Fragment implements JobClickListner {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        populateData();
     }
 
     @Nullable
@@ -45,7 +48,7 @@ public class InReviewJobsFragment extends Fragment implements JobClickListner {
         recyclerView.hasFixedSize();
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
-        populateData();
+        //populateData();
         adapter = new JobAdapter(jobs);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
@@ -55,12 +58,18 @@ public class InReviewJobsFragment extends Fragment implements JobClickListner {
 
     private void populateData() {
         Job job = new Job();
-        job.setJobTitle("Job Title 1");
-        job.setJobLocation("Job Location 1");
+        job.setJobTitle("AC Malfunction");
+        job.setJobCreatedOn("2/3/2018");
+        job.setJobModelNumber("68768768");
+        job.setJobLocation("Behala");
+
         jobs.add(job);
+
         job = new Job();
-        job.setJobTitle("Job Title 2");
-        job.setJobLocation("Job Location 2");
+        job.setJobTitle("Annual Maintenance");
+        job.setJobCreatedOn("12/1/2018");
+        job.setJobModelNumber("97876565");
+        job.setJobLocation("Sealdah");
         jobs.add(job);
         //adapter.notifyDataSetChanged();
     }
@@ -71,12 +80,10 @@ public class InReviewJobsFragment extends Fragment implements JobClickListner {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         JobDescriptionFragment jobDescriptionFragment = new JobDescriptionFragment();
         Bundle args = new Bundle();
-        //args.putSerializable(JobDescriptionFragment.JOB, job);
-        //args.putInt(JobDescriptionFragment.JOB, position);
         args.putString(JobDescriptionFragment.JOB, Utils.getGsonParser().toJson(job));
         jobDescriptionFragment.setArguments(args);
-        fragmentTransaction.replace(R.id.frame_layout, jobDescriptionFragment, jobDescriptionFragment.getTag());
-        //fragmentTransaction.add(R.id.frame_layout, jobDescriptionFragment, jobDescriptionFragment.getTag()).addToBackStack(null).commit();
+        fragmentTransaction.replace(R.id.frame_layout, jobDescriptionFragment, jobDescriptionFragment.getTag())
+                .addToBackStack(jobDescriptionFragment.getTag());
         fragmentTransaction.commit();
     }
 }

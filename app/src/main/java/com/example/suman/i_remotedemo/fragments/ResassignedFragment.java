@@ -16,12 +16,8 @@ import com.example.suman.i_remotedemo.entity.Job;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Suman on 28-03-2018.
- */
 
-public class NewJobsFragment extends Fragment {
-
+public class ResassignedFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -37,8 +33,8 @@ public class NewJobsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.new_jobs_fragment_layout, container, false);
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.new_job_recycler_view);
+        View rootView = inflater.inflate(R.layout.resassigned_fragment_layout, container, false);
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.reassigned_recycler_view);
         recyclerView.hasFixedSize();
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
@@ -50,12 +46,12 @@ public class NewJobsFragment extends Fragment {
 
     private void populateData() {
         Job job = new Job();
-        job.setJobTitle("Job title 13");
-        job.setJobLocation("Salt Lake");
+        job.setJobTitle("Job title 21");
+        job.setJobLocation("New Town");
         jobs.add(job);
         job = new Job();
-        job.setJobTitle("Job title 14");
-        job.setJobLocation("Baguiati");
+        job.setJobTitle("Job title 24");
+        job.setJobLocation("Kestopur");
         jobs.add(job);
         //adapter.notifyDataSetChanged();
     }

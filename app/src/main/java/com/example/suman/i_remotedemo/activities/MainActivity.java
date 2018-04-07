@@ -23,6 +23,7 @@ import com.example.suman.i_remotedemo.fragments.ContentFragment;
 import com.example.suman.i_remotedemo.fragments.HomeFragment;
 import com.example.suman.i_remotedemo.fragments.OnHandItemsFragment;
 import com.example.suman.i_remotedemo.fragments.WarehouseInventoryFragment;
+import com.example.suman.i_remotedemo.utils.Preferences;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -39,8 +40,11 @@ public class MainActivity extends AppCompatActivity
         } catch (InterruptedException e) {
             e.printStackTrace();
         }*/
-        //Intent intent = new Intent(this, LoginActivity.class);
-        //startActivity(intent);
+        SharedPreferences preferences = getSharedPreferences(Preferences.preferenceName, MODE_PRIVATE);
+        if (!preferences.getBoolean(Preferences.loggedIn, false)) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -64,6 +68,30 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+        //if (mFragment == null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            mFragment = new HomeFragment();
+            fragmentTransaction.replace(R.id.frame_layout, mFragment);
+            fragmentTransaction.commit();
+        //}
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //if (mFragment == null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            mFragment = new HomeFragment();
+            fragmentTransaction.replace(R.id.frame_layout, mFragment);
+            fragmentTransaction.commit();
+        //}
+    }
+
+    @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -81,14 +109,16 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+       int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
             return true;
         }
 

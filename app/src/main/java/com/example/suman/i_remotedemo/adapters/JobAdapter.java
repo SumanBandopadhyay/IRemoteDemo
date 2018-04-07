@@ -1,6 +1,5 @@
 package com.example.suman.i_remotedemo.adapters;
 
-import android.app.FragmentManager;
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +12,7 @@ import android.widget.Toast;
 import com.example.suman.i_remotedemo.R;
 import com.example.suman.i_remotedemo.entity.Job;
 import com.example.suman.i_remotedemo.listners.JobClickListner;
+import com.example.suman.i_remotedemo.test.JobsData;
 
 import java.util.List;
 
@@ -39,9 +39,11 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.JobViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(final JobViewHolder holder, int position) {
+    public void onBindViewHolder(JobViewHolder holder, int position) {
         final Job job = jobs.get(position);
         holder.txtJobTitle.setText(job.getJobTitle());
+        holder.txtJobCreatedOn.setText(job.getJobCreatedOn());
+        holder.txtJobModelNumber.setText(job.getJobModelNumber());
         holder.txtJobLocation.setText(job.getJobLocation());
         holder.jobCardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,19 +62,19 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.JobViewHolder> {
     public class JobViewHolder extends RecyclerView.ViewHolder {
 
         TextView txtJobTitle;
+        TextView txtJobCreatedOn;
+        TextView txtJobModelNumber;
         TextView txtJobLocation;
         CardView jobCardView;
 
         public JobViewHolder(View itemView) {
             super(itemView);
-            //itemView.setOnClickListener(this);
             txtJobTitle = (TextView) itemView.findViewById(R.id.job_title);
+            txtJobCreatedOn = (TextView) itemView.findViewById(R.id.job_created_on);
+            txtJobModelNumber = (TextView) itemView.findViewById(R.id.job_model_number);
             txtJobLocation = (TextView) itemView.findViewById(R.id.job_location);
             jobCardView = (CardView) itemView.findViewById(R.id.job_card_view);
-            //jobCardView.setOnClickListener(this);
         }
-
-
     }
 
     public void setClickListener(JobClickListner clickListener){
