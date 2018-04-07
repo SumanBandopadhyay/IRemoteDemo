@@ -19,7 +19,7 @@ import java.util.List;
 public class OnHandItemsFragment extends Fragment implements ACItemClickListner {
 
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
+    private ItemAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
 
     private List<Item> items = new ArrayList<>();
@@ -38,6 +38,7 @@ public class OnHandItemsFragment extends Fragment implements ACItemClickListner 
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         adapter = new ItemAdapter(items);
+        adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
         populateData();
         return view;

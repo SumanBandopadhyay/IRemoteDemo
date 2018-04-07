@@ -74,4 +74,8 @@ public class ItemAdapter  extends RecyclerView.Adapter<ItemAdapter.ItemViewAdapt
         }
     }
 
+    public void setClickListener(ACItemClickListner clickListener){
+        this.clickListner = clickListener;
+    }
+
 }

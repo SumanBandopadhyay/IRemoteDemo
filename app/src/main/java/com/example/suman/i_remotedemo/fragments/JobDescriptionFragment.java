@@ -41,7 +41,7 @@ public class JobDescriptionFragment extends Fragment {
     private TextView txtJobDescLocation;
     private TextView txtJobDescDescription;
     private MapView mapView;
-    private Button btnStartJob;
+    //private Button btnStartJob;
 
     private GoogleMap googleMap;
 
@@ -73,7 +73,7 @@ public class JobDescriptionFragment extends Fragment {
         txtJobDescDescription = (TextView) view.findViewById(R.id.job_desc_description);
         txtJobDescLocation = (TextView) view.findViewById(R.id.job_desc_location);
         txtJobDescModelNo = (TextView) view.findViewById(R.id.job_desc_model_no);
-        btnStartJob = (Button) view.findViewById(R.id.btn_start_job);
+        //btnStartJob = (Button) view.findViewById(R.id.btn_start_job);
         mapView = (MapView) view.findViewById(R.id.mapview);
         mapView.onCreate(savedInstanceState);
         mapView.onResume();
@@ -99,7 +99,7 @@ public class JobDescriptionFragment extends Fragment {
                 googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
             }
         });
-        btnStartJob.setOnClickListener(new View.OnClickListener() {
+        /*btnStartJob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
@@ -109,7 +109,7 @@ public class JobDescriptionFragment extends Fragment {
                         .addToBackStack(jobFormFragment.getTag());
                 fragmentTransaction.commit();
             }
-        });
+        });*/
         return view;
     }
 

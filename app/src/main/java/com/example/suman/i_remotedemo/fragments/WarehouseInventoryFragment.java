@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.example.suman.i_remotedemo.R;
 import com.example.suman.i_remotedemo.adapters.ItemAdapter;
 import com.example.suman.i_remotedemo.entity.Item;
+import com.example.suman.i_remotedemo.listners.ACItemClickListner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class WarehouseInventoryFragment extends Fragment {
+public class WarehouseInventoryFragment extends Fragment implements ACItemClickListner {
 
     private RecyclerView recyclerView;
     private ItemAdapter adapter;
@@ -59,8 +60,19 @@ public class WarehouseInventoryFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         adapter = new ItemAdapter(items);
+        adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
         return view;
+    }
+
+    @Override
+    public void itemAdded(Item item, int countChange) {
+        for (Item i: items) {
+            if (i.equals(item)) {
+                item.setItemCost(item.getItemCost()+countChange);
+            }
+        }
+        adapter.notifyDataSetChanged();
     }
 
 }
