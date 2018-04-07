@@ -23,6 +23,7 @@ public class JobDescriptionFragment extends Fragment {
     private Job job;
     //private int position;
     private TextView txtJobDescTitle;
+    private TextView txtJobDescDescription;
 
     public JobDescriptionFragment() {
         // Required empty public constructor
@@ -30,8 +31,7 @@ public class JobDescriptionFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_job_description, null, false);
         Bundle args = getArguments();
@@ -41,6 +41,8 @@ public class JobDescriptionFragment extends Fragment {
         job = Utils.getGsonParser().fromJson(jobString, Job.class);
         txtJobDescTitle = (TextView) view.findViewById(R.id.job_desc_title);
         txtJobDescTitle.setText("Position : " + job.getJobTitle());
+        txtJobDescDescription = (TextView) view.findViewById(R.id.job_desc_description);
+        txtJobDescDescription.setText("Description : " + job.getJobDescription());
         return view;
     }
 
