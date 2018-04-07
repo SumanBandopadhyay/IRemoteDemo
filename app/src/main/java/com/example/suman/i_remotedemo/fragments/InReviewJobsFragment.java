@@ -59,6 +59,7 @@ public class InReviewJobsFragment extends Fragment implements JobClickListner {
     private void populateData() {
         Job job = new Job();
         job.setJobTitle("AC Malfunction");
+        job.setJobDescription("AC cooling is inconsistent.");
         job.setJobCreatedOn("2/3/2018");
         job.setJobModelNumber("68768768");
         job.setJobLocation("Behala");
@@ -67,6 +68,7 @@ public class InReviewJobsFragment extends Fragment implements JobClickListner {
 
         job = new Job();
         job.setJobTitle("Annual Maintenance");
+        job.setJobDescription("No Defects registered.");
         job.setJobCreatedOn("12/1/2018");
         job.setJobModelNumber("97876565");
         job.setJobLocation("Sealdah");
