@@ -11,11 +11,12 @@ import android.view.ViewGroup;
 import com.example.suman.i_remotedemo.adapters.ItemAdapter;
 import com.example.suman.i_remotedemo.R;
 import com.example.suman.i_remotedemo.entity.Item;
+import com.example.suman.i_remotedemo.listners.ACItemClickListner;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class OnHandItemsFragment extends Fragment {
+public class OnHandItemsFragment extends Fragment implements ACItemClickListner {
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -54,4 +55,13 @@ public class OnHandItemsFragment extends Fragment {
         adapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void itemAdded(Item item, int countChange) {
+        for (Item i: items) {
+            if (i.equals(item)) {
+                item.setItemCost(item.getItemCost()+countChange);
+            }
+        }
+        adapter.notifyDataSetChanged();
+    }
 }

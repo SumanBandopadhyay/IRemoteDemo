@@ -68,6 +68,7 @@ public class InReviewJobsFragment extends Fragment implements JobClickListner {
 
         job = new Job();
         job.setJobTitle("Annual Maintenance");
+        job.setJobDescription("No Defects registered.");
         job.setJobCreatedOn("12/1/2018");
         job.setJobModelNumber("97876565");
         job.setJobLocation("Sealdah");
