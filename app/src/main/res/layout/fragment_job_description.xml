@@ -51,12 +51,16 @@
         <TextView
             android:text="Title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="10dp"/>
 
         <TextView
             android:id="@+id/job_desc_model_no"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="10dp"/>
 
     </LinearLayout>
 
@@ -116,10 +120,11 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"/>
 
-    <Button
+    <!--Button
         android:id="@+id/btn_start_job"
         android:text="Start Job"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.ButtonWidget"/-->
 
 </LinearLayout>
