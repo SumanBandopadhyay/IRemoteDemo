@@ -27,6 +27,7 @@ public class OnHandItemsFragment extends Fragment implements ACItemClickListner 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        populateData();
     }
 
     @Override
@@ -40,20 +41,39 @@ public class OnHandItemsFragment extends Fragment implements ACItemClickListner 
         adapter = new ItemAdapter(items);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
-        populateData();
         return view;
     }
 
     private void populateData() {
         Item item = new Item();
-        item.setItemName("Item 1");
+        item.setItemName("Slip Ring");
         item.setItemCost(10);
         items.add(item);
+
         item = new Item();
-        item.setItemName("Item 2");
-        item.setItemCost(20);
+        item.setItemName("Brush holders");
+        item.setItemCost(2);
         items.add(item);
-        adapter.notifyDataSetChanged();
+
+        item = new Item();
+        item.setItemName("Fabricated commutators");
+        item.setItemCost(5);
+        items.add(item);
+
+        item = new Item();
+        item.setItemName("Carbon brushes");
+        item.setItemCost(4);
+        items.add(item);
+
+        item = new Item();
+        item.setItemName("Terminal Block");
+        item.setItemCost(2);
+        items.add(item);
+
+        item = new Item();
+        item.setItemName("Aluminium Grill");
+        item.setItemCost(2);
+        items.add(item);
     }
 
     @Override

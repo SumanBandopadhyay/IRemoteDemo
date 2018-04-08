@@ -41,13 +41,53 @@ public class WarehouseInventoryFragment extends Fragment implements ACItemClickL
 
     private void populateData() {
         Item item = new Item();
-        item.setItemName("Item 1");
-        item.setItemCost(10);
+        item.setItemName("Water Tray");
+        item.setItemCost(0);
         items.add(item);
 
         item = new Item();
-        item.setItemName("Item 2");
-        item.setItemCost(20);
+        item.setItemName("Motor Inspection Cove");
+        item.setItemCost(0);
+        items.add(item);
+
+        item = new Item();
+        item.setItemName("Terminal Board");
+        item.setItemCost(0);
+        items.add(item);
+
+        item = new Item();
+        item.setItemName("Motor Colling Fan");
+        item.setItemCost(0);
+        items.add(item);
+
+        item = new Item();
+        item.setItemName("Slip Ring");
+        item.setItemCost(0);
+        items.add(item);
+
+        item = new Item();
+        item.setItemName("Brush holders");
+        item.setItemCost(0);
+        items.add(item);
+
+        item = new Item();
+        item.setItemName("Fabricated commutators");
+        item.setItemCost(0);
+        items.add(item);
+
+        item = new Item();
+        item.setItemName("Carbon brushes");
+        item.setItemCost(0);
+        items.add(item);
+
+        item = new Item();
+        item.setItemName("Terminal Block");
+        item.setItemCost(0);
+        items.add(item);
+
+        item = new Item();
+        item.setItemName("Aluminium Grill");
+        item.setItemCost(0);
         items.add(item);
     }
 

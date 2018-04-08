@@ -71,11 +71,11 @@ public class MainActivity extends AppCompatActivity
     protected void onRestart() {
         super.onRestart();
         //if (mFragment == null) {
-            FragmentManager fragmentManager = getSupportFragmentManager();
+            /*FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             mFragment = new HomeFragment();
             fragmentTransaction.replace(R.id.frame_layout, mFragment);
-            fragmentTransaction.commit();
+            fragmentTransaction.commit();*/
         //}
     }
 

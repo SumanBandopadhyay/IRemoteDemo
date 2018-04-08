@@ -55,12 +55,30 @@ public class NewJobsFragment extends Fragment implements JobClickListner {
 
     private void populateData() {
         Job job = new Job();
-        job.setJobTitle("Job title 13");
-        job.setJobLocation("Salt Lake");
+        job.setJobTitle("Remote Malfunction");
+        job.setJobDescription("Unable to control temperature using the remote");
+        job.setJobCreatedOn("02/03/2018");
+        job.setJobModelNumber("68768768");
+        job.setJobContractNumber("988634809");
+        job.setJobLocation("Behala");
         jobs.add(job);
+
         job = new Job();
-        job.setJobTitle("Job title 14");
-        job.setJobLocation("Baguiati");
+        job.setJobTitle("Delayed Cooling");
+        job.setJobDescription("Room temperature is constant, no cooling even after hours");
+        job.setJobCreatedOn("12/03/2018");
+        job.setJobModelNumber("68768768");
+        job.setJobContractNumber("988634809");
+        job.setJobLocation("Behala");
+        jobs.add(job);
+
+        job = new Job();
+        job.setJobTitle("Unable to set the swing mode");
+        job.setJobDescription("Switching to the swing mode is not operational");
+        job.setJobCreatedOn("22/03/2018");
+        job.setJobModelNumber("68768768");
+        job.setJobContractNumber("988634809");
+        job.setJobLocation("Behala");
         jobs.add(job);
         //adapter.notifyDataSetChanged();
     }

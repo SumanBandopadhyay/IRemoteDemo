@@ -60,17 +60,45 @@ public class InReviewJobsFragment extends Fragment implements JobClickListner {
         Job job = new Job();
         job.setJobTitle("AC Malfunction");
         job.setJobDescription("No Cooling even after a couple of hours");
-        job.setJobCreatedOn("2/3/2018");
+        job.setJobCreatedOn("02/03/2018");
         job.setJobModelNumber("68768768");
+        job.setJobContractNumber("988634809");
         job.setJobLocation("Behala");
-
         jobs.add(job);
 
         job = new Job();
         job.setJobTitle("Annual Maintenance");
         job.setJobDescription("No Defects registered");
-        job.setJobCreatedOn("12/1/2018");
+        job.setJobCreatedOn("12/01/2018");
         job.setJobModelNumber("97876565");
+        job.setJobContractNumber("988634809");
+        job.setJobLocation("Sealdah");
+        jobs.add(job);
+
+        job = new Job();
+        job.setJobTitle("Switch Malfunction");
+        job.setJobDescription("AC is not working after switching it on");
+        job.setJobCreatedOn("22/02/2018");
+        job.setJobModelNumber("97876565");
+        job.setJobContractNumber("988634809");
+        job.setJobLocation("Sealdah");
+        jobs.add(job);
+
+        job = new Job();
+        job.setJobTitle("Noise Generation");
+        job.setJobDescription("AC compressor creating a lot of noise");
+        job.setJobCreatedOn("02/02/2018");
+        job.setJobModelNumber("97876565");
+        job.setJobContractNumber("988634809");
+        job.setJobLocation("Sealdah");
+        jobs.add(job);
+
+        job = new Job();
+        job.setJobTitle("Water Leakage");
+        job.setJobDescription("AC water dropping from the ventilator");
+        job.setJobCreatedOn("22/01/2018");
+        job.setJobModelNumber("97876565");
+        job.setJobContractNumber("988634809");
         job.setJobLocation("Sealdah");
         jobs.add(job);
         //adapter.notifyDataSetChanged();
